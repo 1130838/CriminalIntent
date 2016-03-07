@@ -19,12 +19,18 @@ public class CrimeActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crime);
 
+        //get the FragmentManager :
         android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+
+        // get a fragment to FragmentManager deal with  it: ( the fragment is getted from its layout container - to tell where its going to show up in the screen)
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
+
+        // Fragment Manager dealing with the fragment like:
+        // " Create a new fragment transaction, include one add operation and then commit it"
         if (fragment == null){
             fragment = new CrimeFragment();
             fm.beginTransaction()
-                    .add(R.id.fragment_container, fragment)
+                    .add(R.id.fragment_container, fragment) // add(<container view ID>, <fragment>)
                     .commit();
         }
 
